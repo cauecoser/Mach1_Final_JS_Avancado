@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Cauê Coser">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="short link url api">
+    <meta name="description" content="Encurtar sua URL de maneira prática e rápida!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short-It!</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../JS/link.js" defer></script>
+</head>
+
+<body>
+    <div id="fundo">
+        <div id="inicial">
+            <img id="iconeLista" src="../ICONS/engrenagem.png" alt="ENG">
+            <div id="divLogo">
+                <img id="imgLogo" src="../IMAGES/logo3.png" alt="LOGO">
+            </div>
+
+            <div id="divInput">
+                <input id="inputUrl" class="input" type="text" name="" id="" placeholder="URL A SER ENCURTADA">
+                <button id="botaoAncora" type="button" class="botao input" onclick="mostrarDivs()">
+                    <img id="iconeLink" src="../ICONS/link.png" alt="link">
+                </button>
+            </div>
+
+            <div id="divBotao"> <!-- Essa div vira uma imagem durante a obtenção da resposta da promise -->
+                <input id="botaoEncurtar" type="button" class="input botao" value="ENCURTAR">
+                <a id="pLink" class="escondido">O link estará aqui</a>
+                <div id="divImgLoading" class="escondido">
+                    <img id="imgLoading" src="../IMAGES/loading.png" alt="loading">
+                </div>
+            </div>
+
+            <div id="opcoes" class="opcoes escondido">
+                <button type="button" class="botao input">
+                    <img class="iconeOpcoes" src="../ICONS/copy.png" alt="link">
+                    COPIAR
+                </button>
+                <button type="button" class="botao input">
+                    <img class="iconeOpcoes" src="../ICONS/share.png" alt="link">
+                    COMPARTILHAR
+                </button>
+                <button type="button" class="botao input">
+                    <img class="iconeOpcoes" src="../ICONS/qrcode.png" alt="link">
+                    QR CODE
+                </button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <footer id="rodape" class="col-sm-12">
+            <p><b>MACH1</b> - Copyright &copy; 2023</p>
+        </footer>
+    </div>
+</body>
+
+</html>

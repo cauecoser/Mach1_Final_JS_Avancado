@@ -1,0 +1,119 @@
+@import url('./reset.css');
+@import url('./normalize.css');
+
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-size: 16px */
+    
+    --cor-tema-principal: #fff;
+    --cor-tema-secundaria: #085;
+    --cor-texto-footer: #666;
+    --cor-texto-link: #333;
+    --cor-sombras: #ccc;
+    
+}
+
+div {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+#inicial {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#iconeLista {
+    height: 2em;
+    position: fixed;
+    top: 70px;
+    right: 50px;
+}
+
+#iconeLink {
+    height: 1em;
+}
+
+#imgLogo {
+    height: 5em;
+    margin-top: 3em;
+}
+
+.input, #fundo {
+    border-radius: 0.3em;
+    padding: 12px 20px;
+    box-shadow: 0px 0px 5px var(--cor-sombras);
+    border: none;
+}
+
+#divInput {
+    height: 50px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+#inputUrl {
+    width: 30%;
+}
+
+.botao {
+    font-weight: bold;
+    color: var(--cor-tema-principal);
+    background-color: var(--cor-tema-secundaria);
+}
+
+#divBotao {
+    height: 6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#divImgLoading{
+    height: 16em;
+    align-items: center;
+    /* width: 80%; */
+}
+
+#imgLoading {
+    margin-top: 5px;
+    height: 16em;
+}
+
+#pLink {
+    font-size: 1.2em;
+    color: var(--cor-texto-link)
+}
+
+.divLink {
+    background-color: var(--cor-sombras);
+    border-radius: 1em;
+    width: 40%;
+}
+
+.opcoes {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.iconeOpcoes {
+    height: 1.2em;
+}
+
+
+
+.escondido {
+    display: none;
+}
+
+footer p {
+    color: var(--cor-texto-footer)
+}
+
