@@ -6,25 +6,18 @@ let divImgLoading = document.querySelector('#divImgLoading')
 let pLink = document.querySelector('#pLink')
 let opcoes = document.querySelector('#opcoes')
 
-function mostra(e) {
-    e.classList.remove('escondido')
-}
+import { getConfigs } from "./getConfigs.js";
+import { postShortLink } from "./postShortLink.js";
+import { mostra, esconde } from "./mostraEsconde.js";
 
-function esconde(e) {
-    e.classList.add('escondido')
-}
+
+getConfigs()
 
 function mostrarDivs() {
     esconde(botaoEncurtar)
     mostra(divImgLoading)
     inputUrl.setAttribute('placeholder', 'AGUARDE...')
-    setTimeout(() => {
-        inputUrl.setAttribute('placeholder', '')
-        esconde(divImgLoading)
-        divBotao.classList.add('divLink')
-        mostra(pLink)
-        mostra(opcoes)
-    }, 2000);
+
 }
 
 function ocultarDivs() {
@@ -35,9 +28,15 @@ function ocultarDivs() {
     esconde(opcoes)
 }
 
-botaoEncurtar.addEventListener('click', mostrarDivs)
+botaoEncurtar.addEventListener('click', () => { //Assim que clicar preciso checar se inputUrl.value tem uma URL de fato
+    mostrarDivs()
+    postShortLink(inputUrl.value)
+})
+
 botaoAncora.addEventListener('click', () => {
     ocultarDivs()
     mostrarDivs()
+    postShortLink(inputUrl.value)
+    // ocultarDivs()
 })
 
