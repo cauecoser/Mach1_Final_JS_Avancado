@@ -4,23 +4,25 @@
 :root {
     font-family: Arial, Helvetica, sans-serif;
     /* font-size: 16px */
-    
+
     --cor-tema-principal: #fff;
     --cor-tema-secundaria: #085;
+    --cor-tema-terciaria: #AF3;
+    --cor-tema-erro: #F55;
     --cor-texto-footer: #666;
     --cor-texto-link: #333;
     --cor-sombras: #ccc;
-    
+    --cor-botao-compZap: #06f;
 }
 
 div {
     text-align: center;
-    margin-bottom: 1.5em;
 }
 
 #inicial {
     width: 100%;
     display: flex;
+    gap: 2em;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -42,7 +44,8 @@ div {
     margin-top: 3em;
 }
 
-.input, #fundo {
+.input,
+#fundo {
     border-radius: 0.3em;
     padding: 12px 20px;
     box-shadow: 0px 0px 5px var(--cor-sombras);
@@ -50,12 +53,11 @@ div {
 }
 
 #divInput {
-    height: 50px;
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 0.5em;
 }
 
 #inputUrl {
@@ -66,16 +68,22 @@ div {
     font-weight: bold;
     color: var(--cor-tema-principal);
     background-color: var(--cor-tema-secundaria);
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
 }
 
 #divBotao {
-    height: 6em;
+    /* height: 6em; */
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
-#divImgLoading{
+#divImgLoading {
     height: 16em;
     align-items: center;
     /* width: 80%; */
@@ -86,12 +94,17 @@ div {
     height: 16em;
 }
 
-#pLink {
-    font-size: 1.2em;
-    color: var(--cor-texto-link)
+.pLink, .pData {
+    height: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--cor-texto-link);
 }
 
 .divLink {
+
     background-color: var(--cor-sombras);
     border-radius: 1em;
     width: 40%;
@@ -107,13 +120,77 @@ div {
     height: 1.2em;
 }
 
+.divMensagem {
+    width: 40%;
+    font-weight: bold;
+    padding: 1em;
+}
 
+.pLink{
+    font-size: 1.5em;
+}
+
+.pData {
+    font-weight: bold;
+    font-size: 0.8em;
+    color: var(--cor-texto-footer);
+}
+
+.iconRede{
+    height: 3em;
+}
+
+.divRedes {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#divCompartilhamento {
+    width: 40%;
+}
+
+.compZap {
+    width: 100%;
+    display: flex;
+    gap: 0.5em;
+}
+
+#numeroZap {
+    width: 80%;
+}
+
+#botaoCompZap {
+    background-color: var(--cor-botao-compZap);
+}
+
+.baixar {
+    color: var(--cor-botao-compZap);
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancelar {
+    background-color: var(--cor-tema-erro);
+}
+
+.sucesso {
+    color: var(--cor-tema-secundaria);
+    background-color: var(--cor-tema-terciaria);
+}
+
+.erro {
+    color: var(--cor-tema-principal);
+    background-color: var(--cor-tema-erro);
+}
 
 .escondido {
     display: none;
 }
 
 footer p {
-    color: var(--cor-texto-footer)
+    margin-top: 3em;
+    color: var(--cor-texto-footer);
 }
-

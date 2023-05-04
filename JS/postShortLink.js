@@ -1,5 +1,10 @@
 import { API_KEY, APP_JSON, HOSTNAME } from "./config.js";
 import { mostra, esconde } from "./mostraEsconde.js";
+import { mostraOcultaMensagem } from "./index.js";
+import { botaoQrcode } from "./index.js";
+import { postQrCode } from "./postQrCode.js"
+
+
 
 export function postShortLink(urlInput) {
 
@@ -25,9 +30,15 @@ export function postShortLink(urlInput) {
             inputUrl.setAttribute('placeholder', '')
             esconde(divImgLoading)
             divBotao.classList.add('divLink')
-            pLink.innerHTML = response.shortURL
+            botaoQrcode.onclick = () => postQrCode(`${response.idString}`, urlInput)
+            pLink.innerHTML = `<p>${response.shortURL}</p>`
+            let data = new Date(response.createdAt)
+            pData.innerHTML = `<p>Link criado em: ${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}, às ${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}.</p>`
             mostra(pLink)
+            mostra(pData)
             mostra(opcoes)
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+            mostraOcultaMensagem('erro', `${err.message}`)
+        });
 }
