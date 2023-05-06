@@ -72,7 +72,7 @@
 
             <div id="divCompartilhamento" class="escondido">
                 <div id="compZap" class="compZap escondido">
-                    <input id="numeroZap" type="text" class="input" placeholder="Insira o número para compartilhar...">
+                    <input id="numeroZap" type="text" class="input" placeholder="Insira o número no formato internacional...">
                     <button id=botaoCompZap class="botao input">
                         <img class="iconeOpcoes" src="../ICONS/share.png" alt="share_wa">
                     </button>
@@ -89,17 +89,33 @@
             <div id="cancelar" class="cancelar escondido botao input">
                 <p>CANCELAR</p>
             </div>
-            
-            <div id="divMensagem" class="divMensagem escondido">
-                <p id="pMensagem"></p>
-            </div>
-
+    
         </div>
 
+        <div id="divTabela" class="divTabela escondido">
+            <h1>GERENCIADOR DE LINKS</h1>
+            <p id="pDominio"></p>
+            <table id="tabela" class="tabela">
+                <thead>
+                    <th>LINK ENCURTADO</th>
+                    <th>LINK ORIGINAL</th>
+                    <th>CRIADO EM</th>
+                    <th>MODIFICADO EM</th>
+                    <th span="5">AÇÕES</th>
+                </thead>
+                <tbody id="corpo">
 
+                </tbody>
+            </table>
+        </div>
 
+        <div id="fundoModal" class="fundoModal escondido">
 
-
+        </div>
+        
+        <div id="divMensagem" class="divMensagem escondido">
+            <p id="pMensagem"></p>
+        </div>
 
         <footer id="rodape" class="col-sm-12">
             <p><b>MACH1</b> - Copyright &copy; 2023</p>

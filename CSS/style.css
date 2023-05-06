@@ -19,6 +19,10 @@ div {
     text-align: center;
 }
 
+h1 {
+    margin: 0;
+}
+
 #inicial {
     width: 100%;
     display: flex;
@@ -29,27 +33,36 @@ div {
 }
 
 #iconeLista {
-    height: 2em;
+    height: 2rem;
     position: fixed;
     top: 70px;
     right: 50px;
 }
 
 #iconeLink {
-    height: 1em;
+    height: 1rem;
 }
 
 #imgLogo {
-    height: 5em;
-    margin-top: 3em;
+    height: 5rem;
+    margin-top: 3rem;
 }
 
 .input,
 #fundo {
-    border-radius: 0.3em;
+    border-radius: 0.3rem;
     padding: 12px 20px;
     box-shadow: 0px 0px 5px var(--cor-sombras);
     border: none;
+}
+
+#fundo {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 #divInput {
@@ -57,7 +70,7 @@ div {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5em;
+    gap: 0.5rem;
 }
 
 #inputUrl {
@@ -76,7 +89,7 @@ a {
 }
 
 #divBotao {
-    /* height: 6em; */
+    /* height: 6rem; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,18 +97,19 @@ a {
 }
 
 #divImgLoading {
-    height: 16em;
+    height: 16rem;
     align-items: center;
     /* width: 80%; */
 }
 
 #imgLoading {
     margin-top: 5px;
-    height: 16em;
+    height: 16rem;
 }
 
-.pLink, .pData {
-    height: 3em;
+.pLink,
+.pData {
+    height: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -106,7 +120,7 @@ a {
 .divLink {
 
     background-color: var(--cor-sombras);
-    border-radius: 1em;
+    border-radius: 1rem;
     width: 40%;
 }
 
@@ -117,27 +131,28 @@ a {
 }
 
 .iconeOpcoes {
-    height: 1.2em;
+    height: 1.2rem;
 }
 
 .divMensagem {
     width: 40%;
     font-weight: bold;
-    padding: 1em;
+    padding: 1rem;
+
 }
 
-.pLink{
-    font-size: 1.5em;
+.pLink {
+    font-size: 1.5rem;
 }
 
 .pData {
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     color: var(--cor-texto-footer);
 }
 
-.iconRede{
-    height: 3em;
+.iconRede {
+    height: 3rem;
 }
 
 .divRedes {
@@ -153,7 +168,7 @@ a {
 .compZap {
     width: 100%;
     display: flex;
-    gap: 0.5em;
+    gap: 0.5rem;
 }
 
 #numeroZap {
@@ -176,6 +191,52 @@ a {
     background-color: var(--cor-tema-erro);
 }
 
+.divTabela {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#pDominio {
+    font-style: italic;
+}
+
+.tabela {
+    width: 90vw;
+    margin-top: 1rem;
+    text-align: left;
+    line-height: 1rem;
+    font-size: 0.8rem;
+}
+
+td {
+    padding: 0.3rem;
+}
+
+.tabela tr:nth-child(odd) {
+    background-color: var(--cor-tema-principal);
+}
+
+.tabela tr:nth-child(even) {
+    background-color: var(--cor-sombras);
+}
+
+.tabela th td {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.tabela thead {
+    font-weight: bold;
+}
+
+.tabela th {
+    color: var(--cor-tema-principal);
+    background-color: var(--cor-texto-footer);
+}
+
 .sucesso {
     color: var(--cor-tema-secundaria);
     background-color: var(--cor-tema-terciaria);
@@ -191,6 +252,6 @@ a {
 }
 
 footer p {
-    margin-top: 3em;
+    margin-top: 3rem;
     color: var(--cor-texto-footer);
 }

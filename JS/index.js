@@ -26,22 +26,28 @@ let divBlob = document.querySelector('#divBlob')
 let imgQrCode = document.querySelector('#imgQrCode')
 let divBotaoSalvar = document.querySelector('#divBotaoSalvar')
 let linkDowloadQr = document.querySelector('#linkDowloadQr')
+let iconeLista = document.querySelector('#iconeLista')
+let inicial = document.querySelector('#inicial')
+let divInput = document.querySelector('#divInput')
+let divTabela = document.querySelector('#divTabela')
+let pDominio = document.querySelector('#pDominio')
 
 import { getConfigs } from "./getConfigs.js";
 import { postShortLink } from "./postShortLink.js";
 import { mostra, esconde } from "./mostraEsconde.js";
 import { postQrCode } from "./postQrCode.js"
-
+import { HOSTNAME } from "./config.js"
+import { getTabela } from "./getTabela.js"
 
 getConfigs()
 
-function mostrarDivs() {
+export function mostrarDivs() {
     esconde(botaoEncurtar)
     mostra(divImgLoading)
     inputUrl.setAttribute('placeholder', 'AGUARDE...')
 }
 
-function ocultarDivs() {
+export function ocultarDivs() {
     mostra(botaoEncurtar)
     esconde(divImgLoading)
     divBotao.classList.remove('divLink')
@@ -60,85 +66,57 @@ export function mostraOcultaMensagem(tipo, texto) {
     }, 3000);
 }
 
-function compartilhaComRede(rede, site) {
+export function cancel() {
+    esconde(divRedes)
+    esconde(cancelar)
+    esconde(compZap)
+    esconde(divBlob)
+}
+
+export function compartilhaComRede(rede, site) {
     navigator.clipboard.writeText(pLink.innerHTML)
     alert(`Seu link encurtado foi copiado para a área de transferência e você será direcionado ao site da rede social ${rede}!`)
     mostraOcultaMensagem('sucesso', `Compartilhado com ${rede}!`)
     window.open(`${site}`, '_blank')
 }
-// function checkUrl(string) {
-//     try {
-//         let nova = new URL(string)
-//         // console.log(url)
-//         console.log("Valid URL!")
-//     } catch (err) {
-//         // console.log(url)
-//         console.log("Invalid URL!")
-//     }
-// }
 
-botaoEncurtar.addEventListener('click', () => {
-    // checkUrl(`${inputUrl.value}`)
+
+export function validURL(str) {
+    const pattern = new RegExp(
+        '^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', // fragment locator
+        'i'
+    );
+    return pattern.test(str);
+}
+
+botaoEncurtar.onclick = () => {
     mostrarDivs()
     postShortLink(inputUrl.value)
-})
+}
 
-botaoAncora.addEventListener('click', () => {
+botaoAncora.onclick = () => {
     ocultarDivs()
     mostrarDivs()
     postShortLink(inputUrl.value)
-})
+}
 
-botaoCopiar.addEventListener('click', () => {
-    mostraOcultaMensagem('sucesso', 'Link copiado com sucesso!')
-})
+iconeLista.onclick = () => {
+    esconde(divInput)
+    esconde(inputUrl)
+    esconde(botaoAncora)
+    esconde(divBotao)
+    esconde(botaoEncurtar)
+    esconde(divImgLoading)
+    mostra(divTabela)
+    getTabela()
+    pDominio.innerHTML = `Domínio: ${localStorage.getItem('hostname')}`
+}
 
-botaoCompartilhar.addEventListener('click', () => {
-    mostra(divRedes)
-    mostra(cancelar)
-})
-
-cancelar.addEventListener('click', () => {
-    esconde(divRedes)
-    esconde(cancelar)
-    esconde(compZap)
-    esconde(divBlob)
-})
-
-botaoZap.addEventListener('click', () => {
-    mostra(divCompartilhamento)
-    mostra(compZap)
-})
-
-botaoFace.addEventListener('click', () => {
-    compartilhaComRede('Facebook', 'https://pt-br.facebook.com/')
-})
-
-botaoInsta.addEventListener('click', () => {
-    compartilhaComRede('Instagram', 'https://www.instagram.com/')
-})
-
-botaoTwt.addEventListener('click', () => {
-    compartilhaComRede('twitter', 'https://twitter.com/home?lang=pt')
-
-})
-
-botaoLin.addEventListener('click', () => {
-    compartilhaComRede('LinkedIn', 'https://www.linkedin.com/in/')
-})
-
-botaoCompZap.addEventListener('click', () => {
-    // console.log(`https://wa.me/${numeroZap.value}`)
-    if (numeroZap.value.length < 12) {
-        mostraOcultaMensagem('erro', 'Formato de número incorreto!')
-        numeroZap.value = ''
-        numeroZap.focus()
-    } else {
-        window.open(`http://wa.me/${numeroZap.value}`, "_blank")
-        mostraOcultaMensagem('sucesso', 'Compartilhado com WhatsApp!')
-        esconde(compZap)
-    }
-})
 
 // botaoQrcode.addEventListener('click', () => {
 //     imgQrCode.setAttribute('src', `${objectURL}`)
