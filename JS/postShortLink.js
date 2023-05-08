@@ -4,7 +4,6 @@ import { compartilhaComRede, ocultarDivs, mostrarDivs, botaoQrcode, cancel, vali
 import { postQrCode } from "./postQrCode.js"
 
 export function postShortLink(urlInput) {
-
     const options = {
         method: 'POST',
         headers: {
@@ -25,7 +24,6 @@ export function postShortLink(urlInput) {
             }
         })
         .then(response => {
-            console.log(response)
             if (validURL(inputUrl.value)) {
                 inputUrl.setAttribute('placeholder', '')
                 esconde(divImgLoading)

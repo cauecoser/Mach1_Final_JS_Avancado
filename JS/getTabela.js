@@ -1,6 +1,5 @@
 import { API_KEY, APP_JSON, HOSTNAME } from "./config.js";
-import { mostra, esconde } from "./mostraEsconde.js";
-import { postQrCode } from "./postQrCode.js";
+import { abreModalEdicao } from "./index.js";
 
 export function getTabela() {
     const options = {
@@ -20,7 +19,7 @@ export function getTabela() {
             const corpo = document.querySelector('#corpo')
             console.log(response)
             let HtmlToAppend = ''
-            response.links.forEach(element => {
+            response.links.forEach((element) => {
                 const created = new Date(element.createdAt)
                 created.setUTCMinutes(created.getUTCMinutes()-180)
                 const updated = new Date(element.updatedAt)
@@ -28,10 +27,18 @@ export function getTabela() {
                 HtmlToAppend += `<tr>
                     <td>${element.secureShortURL}</td>
                     <td>${element.originalURL}</td>
-                    <td>${created.getDate()}/${created.getMonth() + 1}/${created.getFullYear()}, às ${created.getHours()}:${created.getMinutes()}:${created.getSeconds()}</td>
+                    <td>${created.getDate()}/${created.getMonth() + 1}/${created.getFullYear()} - ${created.getHours()}:${created.getMinutes()}:${created.getSeconds()}</td>
                     <td>${updated.getDate()}/${updated.getMonth() + 1}/${updated.getFullYear()}, às ${updated.getHours()}:${updated.getMinutes()}:${updated.getSeconds()}</td>
-                    <td>BT EDIT</td>
-                    <td>BT EXCL</td>
+                    <td>
+                        <button class="transparente" onclick="abreModalEdicao('${element.lcpath}', '${element.originalURL}')">           
+                            <img class="iconeOpcoes" src="../ICONS/editar.png" alt="record_edit" >
+                        </button>
+                    </td>
+                    <td>
+                        <button class="transparente">
+                            <img class="iconeOpcoes transparente" src="../ICONS/excluir.png" alt="record_delete">
+                            </button>
+                    </td>
                 </tr>`
             });
             corpo.innerHTML = HtmlToAppend

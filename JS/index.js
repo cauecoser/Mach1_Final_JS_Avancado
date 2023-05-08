@@ -31,6 +31,9 @@ let inicial = document.querySelector('#inicial')
 let divInput = document.querySelector('#divInput')
 let divTabela = document.querySelector('#divTabela')
 let pDominio = document.querySelector('#pDominio')
+let modalEdicao = document.querySelector('#modalEdicao')
+let slugInput = document.querySelector('#slugInput')
+let urlInput = document.querySelector('#urlInput')
 
 import { getConfigs } from "./getConfigs.js";
 import { postShortLink } from "./postShortLink.js";
@@ -94,6 +97,12 @@ export function validURL(str) {
     return pattern.test(str);
 }
 
+export function abreModalEdicao(path, url) {
+    mostra(modalEdicao) //?????????????????????????????????????
+    slugInput.value = path
+    urlInput.value = url
+}
+
 botaoEncurtar.onclick = () => {
     mostrarDivs()
     postShortLink(inputUrl.value)
@@ -106,6 +115,7 @@ botaoAncora.onclick = () => {
 }
 
 iconeLista.onclick = () => {
+    inicial.style.display = 'none'
     esconde(divInput)
     esconde(inputUrl)
     esconde(botaoAncora)
