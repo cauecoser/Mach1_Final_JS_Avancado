@@ -27,7 +27,7 @@ export function getConfigs() {
                 localStorage.setItem('hostname', response[0].hostname);
             })
             .catch(err => {
-                console.error(err) //começar as mensagens de erro (tratamento e exibição)
+                mostraOcultaMensagem('erro', `${err.message}`)
             });
     }
 }

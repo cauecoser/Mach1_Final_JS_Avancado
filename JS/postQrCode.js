@@ -1,7 +1,9 @@
 import { API_KEY, APP_JSON, HOSTNAME } from "./config.js";
-import { mostraOcultaMensagem } from "./index.js";
-import { mostra, esconde } from "./mostraEsconde.js";
-import { cancelar } from "./index.js"
+import { mostraOcultaMensagem, mostra, cancelar } from "./main.js";
+
+let imgQrCode = document.querySelector('#imgQrCode')
+let divBotaoSalvar = document.querySelector('#divBotaoSalvar')
+let linkDowloadQr = document.querySelector('#linkDowloadQr')
 
 export function postQrCode(id, urlInput) {
 
@@ -30,7 +32,9 @@ export function postQrCode(id, urlInput) {
             imgQrCode.src = objectURL
             linkDowloadQr.href = objectURL
             linkDowloadQr.download = 'Short-It_Link.png'
+            linkDowloadQr.onclick = () => mostraOcultaMensagem('sucesso', 'QR CODE BAIXADO COM SUCESSO!')
             mostra(cancelar)
+            mostraOcultaMensagem('sucesso', 'QR CODE GERADO COM SUCESSO!')
         })
         .catch(err => {
             mostraOcultaMensagem('erro', `${err.message}`)

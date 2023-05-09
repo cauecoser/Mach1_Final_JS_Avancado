@@ -138,11 +138,69 @@ a {
     height: 1.2rem;
 }
 
-.divMensagem {
-    width: 40%;
-    font-weight: bold;
-    padding: 1rem;
 
+.divMensagem {
+    /* width: 40%; */
+    opacity: 0;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 1rem;
+    border-radius: 1em;
+    position: absolute;
+    left: 3rem;
+    top: 10em;
+}
+
+/* #pMensagem {
+    opacity: 0;
+} */
+
+.fadeIn {
+    animation: fadeIn 0.5s 0.5s both;
+}
+
+.fadeOut {
+    animation: fadeOut 0.5s 3s both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes reveal {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
 }
 
 .pLink {
@@ -220,7 +278,8 @@ th {
     background-color: var(--cor-texto-link);
 }
 
-th, td {
+th,
+td {
     padding: 0.5rem;
 }
 
@@ -271,7 +330,7 @@ tr:hover {
     font-weight: bold;
 }
 
-.inputsModal{
+.inputsModal {
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -297,11 +356,6 @@ tr:hover {
     padding: 0.3rem 0.6rem;
     border-radius: 1rem;
     font-size: 1rem;
-}
-
-.transparente {
-    background-color: transparent;
-    border: none;
 }
 
 .sucesso {

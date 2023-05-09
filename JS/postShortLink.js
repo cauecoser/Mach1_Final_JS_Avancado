@@ -1,7 +1,19 @@
+import { compartilhaComRede, mostra, esconde, ocultarDivs, cancel, validURL, mostraOcultaMensagem, cancelar} from "./main.js";
 import { API_KEY, APP_JSON, HOSTNAME } from "./config.js";
-import { mostra, esconde } from "./mostraEsconde.js";
-import { compartilhaComRede, ocultarDivs, mostrarDivs, botaoQrcode, cancel, validURL, mostraOcultaMensagem } from "./index.js";
 import { postQrCode } from "./postQrCode.js"
+
+let botaoCopiar = document.querySelector('#botaoCopiar')
+let botaoCompartilhar = document.querySelector('#botaoCompartilhar')
+let botaoQrcode = document.querySelector('#botaoQrcode')
+let pData = document.querySelector('#pData')
+let botaoZap = document.querySelector('#botaoZap')
+let botaoFace = document.querySelector('#botaoFace')
+let botaoInsta = document.querySelector('#botaoInsta')
+let botaoTwt = document.querySelector('#botaoTwt')
+let botaoLin = document.querySelector('#botaoLin')
+let divCompartilhamento = document.querySelector('#divCompartilhamento')
+let botaoCompZap = document.querySelector('#botaoCompZap')
+let numeroZap = document.querySelector('#numeroZap')
 
 export function postShortLink(urlInput) {
     const options = {
@@ -20,7 +32,7 @@ export function postShortLink(urlInput) {
                 return response.json()
             } else {
                 ocultarDivs()   
-                throw new Error('A RESPOSTA DA APLICAÇÃO NÃO FOI OBTIDA!')
+                throw new Error('NÃO FOI POSSÍVEL COMUNICAR COM A APLICAÇÃO!')
             }
         })
         .then(response => {
@@ -30,14 +42,13 @@ export function postShortLink(urlInput) {
                 divBotao.classList.add('divLink')
                 botaoCopiar.onclick = () => {
                     cancel()
-                    mostraOcultaMensagem('sucesso', 'Link copiado com sucesso!')
+                    mostraOcultaMensagem('sucesso', 'LINK COPIADO COM SUCESSO!')
                 }
                 botaoCompartilhar.onclick = () => {
                     cancel()
                     mostra(divRedes)
                     mostra(cancelar)
                     cancelar.onclick = () => cancel()
-                    // cancelar.onclick = cancel()
                     botaoZap.onclick = () => {
                         mostra(divCompartilhamento)
                         mostra(compZap)
@@ -45,12 +56,12 @@ export function postShortLink(urlInput) {
                         botaoCompZap.onclick = () => {
                             // console.log(`https://wa.me/${numeroZap.value}`)
                             if (numeroZap.value.length < 12) {
-                                mostraOcultaMensagem('erro', 'Formato de número incorreto!')
+                                mostraOcultaMensagem('erro', 'FORMATO DE NÚMERO INCORRETO!')
                                 numeroZap.value = ''
                                 numeroZap.focus()
                             } else {
                                 window.open(`http://wa.me/${numeroZap.value}`, "_blank")
-                                mostraOcultaMensagem('sucesso', 'Compartilhado com WhatsApp!')
+                                mostraOcultaMensagem('sucesso', 'COMPARTILHADO COM WHATSAPP!')
                                 esconde(compZap)
                             }
                         }
@@ -83,6 +94,7 @@ export function postShortLink(urlInput) {
                 mostra(pLink)
                 mostra(pData)
                 mostra(opcoes)
+                mostraOcultaMensagem('sucesso', 'LINK CURTO GERADO COM SUCESSO!')
             } else {
                 ocultarDivs()
                 throw new Error('A URL INSERIDA É INVÁLIDA!')

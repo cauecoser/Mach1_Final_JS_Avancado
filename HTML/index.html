@@ -10,12 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Short-It!</title>
     <link rel="stylesheet" href="../CSS/style.css">
-    <script src="../JS/index.js" type="module" defer></script>
+    <script src="../JS/main.js" type="module" defer></script>
 </head>
 
 <body>
     <div id="fundo">
-        <div>
+        <div id="cab">
             <img id="iconeLista" src="../ICONS/engrenagem.png" alt="ENG">
             <div id="divLogo">
                 <a href=""><img id="imgLogo" src="../IMAGES/logo3.png" alt="LOGO"></a>
@@ -114,29 +114,35 @@
 
         <div id="modalEdicao" class="modalEdicao escondido">
             <div id="quadroBranco" class="quadroBranco">
-                <button class="btnFechar">Fechar</button>
+                <button id="fechaEdicao" class="btnFechar">Fechar</button>
                 <div class="pModal">
                     <p id="linkInfo">AQUI</p>
                 </div>
                 <div class="inputsModal">
-                    <label>Path (Slug): <input id="slugInput" type="text" class="input inputModal"></label><br />
+                    <label>Path (Slug): <input id="slugInput" type="text" class="input inputModal"></label><br/>
                     <label>URL Original: <input id="urlInput" type="text" class="input inputModal"></label>
                 </div>
-                <input type="button" class="botao input btnModal" value="SALVAR">
+                <input id="salvaEdicao" type="button" class="botao input btnModal" value="SALVAR">
             </div>
         </div>
 
         <div id="modalExcluir" class="modalExcluir escondido">
         </div>
 
-        <div id="divMensagem" class="divMensagem escondido">
+        <div id="divMensagem" class="divMensagem">
             <p id="pMensagem"></p>
         </div>
 
-        <footer id="rodape" class="col-sm-12">
+        <footer id="rodape">
             <b>MACH1</b> - Copyright &copy; 2023
         </footer>
     </div>
 </body>
 
 </html>
+
+<!--
+    POR QUE O ERRO DA EDIÇÃO DE LNK NÃO ESTÁ SENDO EXIBIDO?
+    IMPLEMENTAR DELETE
+    CONFIGURAR REDES SOCIAIS    
+-->

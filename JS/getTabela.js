@@ -1,5 +1,13 @@
-import { API_KEY, APP_JSON, HOSTNAME } from "./config.js";
-import { abreModalEdicao } from "./index.js";
+import { API_KEY, APP_JSON } from "./config.js";
+import { validURL, mostra, esconde } from "./main.js";
+import { postEditShortLink } from "./postEditShortLink.js";
+
+let slugInput = document.querySelector('#slugInput')
+let urlInput = document.querySelector('#urlInput')
+let modalEdicao = document.querySelector('#modalEdicao')
+let fechaEdicao = document.querySelector('#fechaEdicao')
+let salvaEdicao = document.querySelector('#salvaEdicao')
+
 
 export function getTabela() {
     const options = {
@@ -19,29 +27,53 @@ export function getTabela() {
             const corpo = document.querySelector('#corpo')
             console.log(response)
             let HtmlToAppend = ''
-            response.links.forEach((element) => {
+            response.links.forEach((element, index) => {
                 const created = new Date(element.createdAt)
-                created.setUTCMinutes(created.getUTCMinutes()-180)
+                created.setUTCMinutes(created.getUTCMinutes() - 180)
                 const updated = new Date(element.updatedAt)
-                updated.setUTCMinutes(updated.getUTCMinutes()-180)
+                updated.setUTCMinutes(updated.getUTCMinutes() - 180)
                 HtmlToAppend += `<tr>
                     <td>${element.secureShortURL}</td>
                     <td>${element.originalURL}</td>
                     <td>${created.getDate()}/${created.getMonth() + 1}/${created.getFullYear()} - ${created.getHours()}:${created.getMinutes()}:${created.getSeconds()}</td>
                     <td>${updated.getDate()}/${updated.getMonth() + 1}/${updated.getFullYear()}, às ${updated.getHours()}:${updated.getMinutes()}:${updated.getSeconds()}</td>
-                    <td>
-                        <button class="transparente" onclick="abreModalEdicao('${element.lcpath}', '${element.originalURL}')">           
-                            <img class="iconeOpcoes" src="../ICONS/editar.png" alt="record_edit" >
-                        </button>
+                    <td>          
+                        <img id="iconeEdita_${index}" idstring="${element.idString}" shortlink="${element.secureShortURL}" urloriginal="${element.originalURL}" path="${element.path}" class="edicao iconeOpcoes" src="../ICONS/editar.png" alt="record_edit" >
                     </td>
                     <td>
-                        <button class="transparente">
-                            <img class="iconeOpcoes transparente" src="../ICONS/excluir.png" alt="record_delete">
-                            </button>
+                        <img id="iconeExclui_${index}" class="exclusao iconeOpcoes transparente" src="../ICONS/excluir.png" alt="record_delete">
                     </td>
                 </tr>`
             });
             corpo.innerHTML = HtmlToAppend
+            document.querySelectorAll('.edicao').forEach(e => {
+                e.onclick = () => {
+                    mostra(modalEdicao)
+                    linkInfo.innerHTML = `Editando: <a>${e.getAttribute('shortlink')}</a>`
+                    urlInput.value = e.getAttribute('urloriginal')
+                    slugInput.value = e.getAttribute('path')
+                    fechaEdicao.onclick = () => {
+                        esconde(modalEdicao)
+                    }
+
+                    salvaEdicao.onclick = () => {
+                        esconde(modalEdicao)
+                        if (slugInput.value.length != 6) {
+                            throw new Error('O ATALHO (SLUG) DEVE TER 6 CARACTERES!')
+                        } else if (!validURL(urlInput.value)) {
+                            throw new Error('A URL INSERIDA É INVÁLIDA!')
+                        } else {
+                            postEditShortLink(urlInput.value, slugInput.value, e.getAttribute('idString'))
+                        }
+                    }
+                }
+            })
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+            mostraOcultaMensagem('erro', `${err.message}`)
+        });
 }
+
+
+
+
