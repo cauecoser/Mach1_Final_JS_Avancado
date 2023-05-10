@@ -2,6 +2,7 @@ import { compartilhaComRede, mostra, esconde, ocultarDivs, cancel, validURL, mos
 import { API_KEY, APP_JSON, HOSTNAME } from "./config.js";
 import { postQrCode } from "./postQrCode.js"
 
+let inputUrl = document.querySelector('#inputUrl')
 let botaoCopiar = document.querySelector('#botaoCopiar')
 let botaoCompartilhar = document.querySelector('#botaoCompartilhar')
 let botaoQrcode = document.querySelector('#botaoQrcode')
@@ -36,7 +37,7 @@ export function postShortLink(urlInput) {
             }
         })
         .then(response => {
-            if (validURL(inputUrl.value)) {
+            if (validURL(urlInput)) {
                 inputUrl.setAttribute('placeholder', '')
                 esconde(divImgLoading)
                 divBotao.classList.add('divLink')
