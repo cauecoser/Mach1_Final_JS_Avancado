@@ -17,13 +17,10 @@ export function postEditShortLink(originalURL, path, idString) {
             if ((response.status === 200 || response.status === 201) && response.ok) {
                 return response.json()
             } else {
-                throw new Error('NÃO FOI POSSÍVEL COMUNICAR COM A APLICAÇÃO.')
+                throw new Error('NÃO FOI POSSÍVEL COMUNICAR COM A APLICAÇÃO!')
             }
         })
-        .then(response => {
-            console.log(response)
-            getTabela()
-        })
+        .then(() => { getTabela() })
         .catch(err => {
             mostraOcultaMensagem('erro', `${err.message}`)
         });

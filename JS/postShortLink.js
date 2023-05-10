@@ -54,21 +54,19 @@ export function postShortLink(urlInput) {
                         mostra(compZap)
                         numeroZap.value = ''
                         botaoCompZap.onclick = () => {
-                            // console.log(`https://wa.me/${numeroZap.value}`)
                             if (numeroZap.value.length < 12) {
                                 mostraOcultaMensagem('erro', 'FORMATO DE NÚMERO INCORRETO!')
                                 numeroZap.value = ''
                                 numeroZap.focus()
                             } else {
-                                window.open(`http://wa.me/${numeroZap.value}`, "_blank")
-                                mostraOcultaMensagem('sucesso', 'COMPARTILHADO COM WHATSAPP!')
+                                window.open(`http://wa.me/${numeroZap.value}?text=Acesse%20meu%20link!:%20${response.secureShortURL}`, "_blank")
                                 esconde(compZap)
                             }
                         }
                     }
 
                     botaoFace.onclick = () => {
-                        compartilhaComRede('Facebook', 'https://pt-br.facebook.com/')
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${response.secureShortURL}&amp;src=sdkpreparse`)
                     }
 
                     botaoInsta.onclick = () => {
@@ -76,12 +74,11 @@ export function postShortLink(urlInput) {
                     }
 
                     botaoTwt.onclick = () => {
-                        compartilhaComRede('twitter', 'https://twitter.com/home?lang=pt')
-
+                        window.open(`https://twitter.com/intent/tweet?text=SHORT-IT!&url=${response.secureShortURL}&via=shortit`)
                     }
 
                     botaoLin.onclick = () => {
-                        compartilhaComRede('LinkedIn', 'https://www.linkedin.com/in/')
+                        window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${response.secureShortURL}`)
                     }
                 }
                 botaoQrcode.onclick = () => {

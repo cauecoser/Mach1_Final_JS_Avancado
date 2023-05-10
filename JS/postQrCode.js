@@ -22,7 +22,7 @@ export function postQrCode(id, urlInput) {
             if ((response.status === 201) && response.ok) {
                 return response.blob()
             } else {
-                throw new Error('LINK QR CODE NÃO ENCONTRADO!')
+                throw new Error('NÃO FOI POSSÍVEL COMUNICAR COM A APLICAÇÃO!')
             }
         })
         .then(blob => {

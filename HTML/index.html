@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v16.0"
+        nonce="UU6ZdmSz"></script>
+
     <div id="fundo">
         <div id="cab">
             <img id="iconeLista" src="../ICONS/engrenagem.png" alt="ENG">
@@ -30,7 +34,7 @@
                 </button>
             </div>
 
-            <div id="divBotao"> <!-- Essa div vira uma imagem durante a obtenção da resposta da promise -->
+            <div id="divBotao">
                 <input id="botaoEncurtar" type="button" class="input botao" value="ENCURTAR">
                 <div id="pLink" class="pLink escondido"></div>
                 <div id="pData" class="pData escondido"></div>
@@ -55,21 +59,27 @@
             </div>
 
             <div id="divRedes" class="divRedes escondido">
-                <button id="botaoZap">
+                <a id="botaoZap">
                     <img src="../IMAGES/wa.png" class="iconRede" alt="wa_icon">
-                </button>
-                <button id="botaoFace">
+                </a>
+
+                <a id="botaoFace" target="_blank">
                     <img src="../IMAGES/face.png" class="iconRede" alt="face_icon">
-                </button>
-                <button id="botaoInsta">
+                </a>
+
+                <a id="botaoInsta">
                     <img src="../IMAGES/insta.png" class="iconRede" alt="insta_icon">
-                </button>
-                <button id="botaoTwt">
+                </a>
+
+                <a id="botaoTwt" target="_blank">
                     <img src="../IMAGES/twt.png" class="iconRede" alt="twt_icon">
-                </button>
-                <button id="botaoLin">
+                </a>
+
+                <a id="botaoLin">
                     <img src="../IMAGES/lin.png" class="iconRede" alt="lin_icon">
-                </button>
+                    <!-- <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: pt_BR</script>
+                    <script type="IN/Share" data-url=""></script> -->
+                </a>
             </div>
 
             <div id="divCompartilhamento" class="escondido">
@@ -90,7 +100,7 @@
             </div>
 
             <div id="cancelar" class="cancelar escondido botao input">
-                <p>CANCELAR</p>
+                <p>FECHAR</p>
             </div>
 
         </div>
@@ -119,10 +129,16 @@
                     <p id="linkInfo">AQUI</p>
                 </div>
                 <div class="inputsModal">
-                    <label>Path (Slug): <input id="slugInput" type="text" class="input inputModal"></label><br/>
-                    <label>URL Original: <input id="urlInput" type="text" class="input inputModal"></label>
+                    <label id="slugLabel">Path (Slug): <input id="slugInput" type="text"
+                            class="input inputModal"></label><br />
+                    <label id="urlLabel">URL Original: <input id="urlInput" type="text"
+                            class="input inputModal"></label>
                 </div>
                 <input id="salvaEdicao" type="button" class="botao input btnModal" value="SALVAR">
+                <div id="acoesExclusao" class="acoesExclusao">
+                    <input id="confirmaExclusao" type="button" class="botao input btnModal cancelar" value="CONFIRMAR">
+                    <input id="cancelaExclusao" type="button" class="botao input btnModal" value="CANCELAR">
+                </div>
             </div>
         </div>
 
@@ -143,6 +159,6 @@
 
 <!--
     POR QUE O ERRO DA EDIÇÃO DE LNK NÃO ESTÁ SENDO EXIBIDO?
-    IMPLEMENTAR DELETE
+
     CONFIGURAR REDES SOCIAIS    
 -->

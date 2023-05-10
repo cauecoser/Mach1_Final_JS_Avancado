@@ -11,15 +11,13 @@ export function getConfigs() {
 
         fetch(`${URL_API}/domains`, options)
             .then(response => {
-                console.log(response)
                 if (response.status === 200 && response.ok) {
                     return response.json()
                 } else {
-                    throw new Error('ERRO NA COMUNICAÇÃO COM O SERVIDOR!')
+                    throw new Error('NÃO FOI POSSÍVEL COMUNICAR COM A APLICAÇÃO!')
                 }
             })
             .then(response => {
-                console.log(response)
                 if (!Array.isArray(response)) {
                     throw new Error('DADOS NÃO ENCONTRADOS NA RESPOSTA DO SERVIDOR!')
                 }
